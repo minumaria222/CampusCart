@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { Menu, ShoppingBag, X } from "lucide-react";
+import { LayoutDashboard, Menu, ShoppingBag, X } from "lucide-react";
 import { useAuth } from "../context/AuthContext.jsx";
 
 export default function Navbar() {
@@ -29,10 +29,10 @@ export default function Navbar() {
           <NavLink to="/" onClick={close}>Explore</NavLink>
           {user ? (
             <>
-              <NavLink to="/my-listings" onClick={close}>My listings</NavLink>
-              <NavLink to="/wishlist" onClick={close}>Saved</NavLink>
-              <NavLink to="/enquiries" onClick={close}>Enquiries</NavLink>
-              <NavLink to="/profile" onClick={close}>Profile</NavLink>
+              <NavLink to="/dashboard" onClick={close}>
+                <LayoutDashboard size={14} style={{ marginRight: 4, verticalAlign: -2 }} />
+                Dashboard
+              </NavLink>
               {user.role === "admin" && <NavLink to="/admin" onClick={close}>Admin</NavLink>}
               <span className="nav-user">Hi, {user.name.split(" ")[0]}</span>
               <button className="nav-text-button" onClick={handleLogout}>Log out</button>
